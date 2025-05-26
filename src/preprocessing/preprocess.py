@@ -1,15 +1,40 @@
+# import pandas as pd
+
+# def preprocess():
+#     df = pd.read_csv('../../data/processed/raw_data.csv')
+
+#     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
+
+#     df = df.dropna(subset=['MSRP'])
+#     num_cols = df.select_dtypes(include='number').columns
+#     df[num_cols] = df[num_cols].fillna(df[num_cols].median())
+
+#     df.to_csv('../../data/processed/train.csv', index=False)
+#     print("✅ Preprocessing completed.")
+
+# if __name__ == '__main__':
+#     preprocess()
+
+import os
 import pandas as pd
 
 def preprocess():
-    df = pd.read_csv('data/processed/clean_raw.csv')
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
+    file_path = os.path.join(base_dir, 'data/processed/clean_raw.csv')
+    output_path = os.path.join(base_dir, 'data/processed/train.csv')
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"🚫 File not found: {file_path}")
+
+    df = pd.read_csv(file_path)
 
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
 
-    df = df.dropna(subset=['MSRP'])
+    df = df.dropna(subset=['msrp'])
     num_cols = df.select_dtypes(include='number').columns
     df[num_cols] = df[num_cols].fillna(df[num_cols].median())
 
-    df.to_csv('data/processed/train.csv', index=False)
+    df.to_csv(output_path, index=False)
     print("✅ Preprocessing completed.")
 
 if __name__ == '__main__':
