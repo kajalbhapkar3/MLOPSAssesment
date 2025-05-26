@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 def evaluate():
     df = pd.read_csv('../data/processed/train.csv')
-    model = joblib.load('app/model.pkl')
+    model = joblib.load('../../app/model.pkl')
 
     features = ['year', 'engine_hp', 'engine_cylinders', 'highway_mpg', 'city_mpg', 'popularity']
     X = df[features]

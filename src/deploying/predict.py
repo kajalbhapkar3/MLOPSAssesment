@@ -1,7 +1,7 @@
 import pandas as pd
 import joblib
 
-def load_model(model_path="app/model.pkl"):
+def load_model(model_path="../../app/model.pkl"):
     model = joblib.load(model_path)
     return model
 

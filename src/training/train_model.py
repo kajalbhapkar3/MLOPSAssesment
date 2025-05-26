@@ -15,7 +15,7 @@ def train():
     model = DecisionTreeRegressor(max_depth=5, random_state=42)
     model.fit(X_train, y_train)
 
-    joblib.dump(model, 'app/model.pkl')
+    joblib.dump(model, '../../app/model.pkl')
     print("✅ Model trained and saved.")
 
 if __name__ == '__main__':
