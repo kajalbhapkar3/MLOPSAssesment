@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
 
 def train():
-    df = pd.read_csv('data/processed/train.csv')
+    df = pd.read_csv('../data/processed/train.csv')
 
     features = ['year', 'engine_hp', 'engine_cylinders', 'highway_mpg', 'city_mpg', 'popularity']
     X = df[features]

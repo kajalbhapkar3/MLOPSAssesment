@@ -8,7 +8,7 @@ def retrain():
     print("🔁 Starting model retraining...")
 
     # Load preprocessed data
-    data = pd.read_csv("data/processed/train.csv")
+    data = pd.read_csv("../data/processed/train.csv")
     X = data.drop("MSRP", axis=1)
     y = data["MSRP"]
 
