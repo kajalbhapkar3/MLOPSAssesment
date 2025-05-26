@@ -5,7 +5,7 @@ def preprocess():
 
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
 
-    df = df.dropna(subset=['msrp'])
+    df = df.dropna(subset=['MSRP'])
     num_cols = df.select_dtypes(include='number').columns
     df[num_cols] = df[num_cols].fillna(df[num_cols].median())
 
