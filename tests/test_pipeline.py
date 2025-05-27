@@ -14,7 +14,7 @@
 import subprocess
 
 def test_preprocessing():
-    result = subprocess.run(["python", "src/data/preprocess.py"], capture_output=True)
+    result = subprocess.run(["python", "src/preprocessing/preprocess.py"], capture_output=True)
     assert result.returncode == 0, f"Preprocessing failed: {result.stderr.decode()}"
 
 
