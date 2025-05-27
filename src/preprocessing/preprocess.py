@@ -14,12 +14,11 @@
 
 # if __name__ == '__main__':
 #     preprocess()
-
 import os
 import pandas as pd
 
 def preprocess():
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))  # This points to /src/
     file_path = os.path.join(base_dir, 'data/processed/clean_raw.csv')
     output_path = os.path.join(base_dir, 'data/processed/train.csv')
 
@@ -28,14 +27,15 @@ def preprocess():
 
     df = pd.read_csv(file_path)
 
+    # Your preprocessing steps here
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
-
     df = df.dropna(subset=['msrp'])
     num_cols = df.select_dtypes(include='number').columns
     df[num_cols] = df[num_cols].fillna(df[num_cols].median())
 
     df.to_csv(output_path, index=False)
-    print("✅ Preprocessing completed.")
+    print(f"✅ Preprocessing completed. Saved to: {output_path}")
 
 if __name__ == '__main__':
     preprocess()
+
